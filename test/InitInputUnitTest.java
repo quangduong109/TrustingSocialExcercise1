@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,12 +22,14 @@ public class InitInputUnitTest {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream("input/input50M.csv"), "utf-8"));
-            writer.write("PHONE_NUMBER,ACTIVATION_DATE,DEACTIVATION_DATE");
-            for (int i = 1; i < 50; i++) {
-                for (int j = 0; j < 1000000; j++) {
-                    long phone = 84987000000l + i;
-                    writer.write(phone + ",2016-03-01,2016-05-01");
-                }
+            writer.write("PHONE_NUMBER,ACTIVATION_DATE,DEACTIVATION_DATE \n");
+            Random rd = new Random();
+            for (int i = 1; i < 50000000; i++) {
+                    long phone =  i + rd.nextInt(84000000);
+                    if((i) % 100000 == 0 ){
+                        System.out.println(i);
+                    }
+                    writer.write(phone + ",2016-03-01,2016-05-01 \n");
             }
 
         } catch (IOException ex) {

@@ -12,6 +12,7 @@ import java.util.Date;
  * @author quangdv3
  */
 public class TimeItem {
+    public boolean writeToFile = false;
     public Date activeTime;
     public Date deactiveTime;
 }
