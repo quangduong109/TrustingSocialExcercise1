@@ -35,6 +35,8 @@ public class MainApp {
         String fileNameInput = null;
         String fileNameOutput = null;
         String fileNameInputSorted = null;
+        long startTime = System.currentTimeMillis();
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
         for (int param = 0; param < args.length; ++param) {
             if (fileNameInput == null) {
@@ -48,7 +50,7 @@ public class MainApp {
 
             }
         }
-        if(fileNameInput == null){
+        if (fileNameInput == null) {
             fileNameInput = defaultFileNameInput;
             fileNameInputSorted = defaultFileNameInputSorted;
             fileNameOutput = defaultFileNameOutput;
@@ -82,11 +84,11 @@ public class MainApp {
                     lineNext = scanner.nextLine().trim();
                     if (lineNext != null) {
                         String[] splitNextLine = lineNext.split(",");
-                        if(!splitLine[0].equals(splitNextLine[0])){
+                        if (!splitLine[0].equals(splitNextLine[0])) {
                             writer.write(splitLine[0] + "," + format.format(activeTime) + "\n");
                             break;
-                        } else{
-                            if(splitNextLine.length == 2){
+                        } else {
+                            if (splitNextLine.length == 2) {
                                 break;
                             }
                             try {
@@ -94,7 +96,7 @@ public class MainApp {
                                 if (deactiveTime.getTime() < activeTimeNextLine.getTime()) {
                                     activeTime = activeTimeNextLine;
                                     deactiveTime = format.parse(splitNextLine[2]);
-                                } else if(deactiveTime.getTime() == activeTimeNextLine.getTime()) {
+                                } else if (deactiveTime.getTime() == activeTimeNextLine.getTime()) {
                                     deactiveTime = format.parse(splitNextLine[2]);
                                 }
                             } catch (ParseException e) {
@@ -119,6 +121,12 @@ public class MainApp {
                 writer.close();
             } catch (Exception ex) {
             }
+            long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            long endTime = System.currentTimeMillis();
+            System.out.println("************ ALL DONE ************");
+            System.out.println("Output in folder: " + fileNameOutput);
+            System.out.println("ExecuteTime: " + (endTime - startTime));
+            System.out.println("MemoryUsed: " + (afterUsedMem - beforeUsedMem));
         }
 
 

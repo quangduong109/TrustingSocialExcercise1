@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TrustingSocialExcercise1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TrustingSocialExcercise1_jar</output-path>
+    <root id="archive" name="TrustingSocialExcercise1.jar">
+      <element id="module-output" name="TrustingSocialExcercise1" />
+    </root>
+  </artifact>
+</component>
