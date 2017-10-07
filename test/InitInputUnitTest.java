@@ -21,15 +21,20 @@ public class InitInputUnitTest {
         Writer writer = null;
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("input/input50M.csv"), "utf-8"));
+                new FileOutputStream("input/input50.csv"), "utf-8"));
             writer.write("PHONE_NUMBER,ACTIVATION_DATE,DEACTIVATION_DATE \n");
             Random rd = new Random();
             for (int i = 1; i < 50000000; i++) {
-                    long phone =  i + rd.nextInt(84000000);
+                    long phone =  987000000 + rd.nextInt(50000000);
                     if((i) % 100000 == 0 ){
                         System.out.println(i);
                     }
+                if((i) % 50000 == 0 ){
+                    writer.write(phone + ",2016-03-01, \n");
+                } else{
                     writer.write(phone + ",2016-03-01,2016-05-01 \n");
+                }
+
             }
 
         } catch (IOException ex) {

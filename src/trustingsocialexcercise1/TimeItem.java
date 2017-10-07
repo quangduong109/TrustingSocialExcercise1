@@ -12,7 +12,11 @@ import java.util.Date;
  * @author quangdv3
  */
 public class TimeItem {
-    public boolean writeToFile = false;
-    public Date activeTime;
-    public Date deactiveTime;
+    public Integer activeTime;
+    public Integer deactiveTime;
+
+    public TimeItem(Integer activeTime, Integer deactiveTime) {
+        this.activeTime = activeTime;
+        this.deactiveTime = deactiveTime;
+    }
 }
